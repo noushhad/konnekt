@@ -1,18 +1,19 @@
-import { router } from "expo-router";
-import { useState } from "react";
-import { Alert, Button, TextInput, View } from "react-native";
-import { supabase } from "../../src/lib/supabase";
+import { useRouter } from 'expo-router';
+import { useState } from 'react';
+import { Alert, Button, TextInput, View } from 'react-native';
+import { supabase } from '../../src/lib/supabase';
 
 export default function LoginScreen() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const router = useRouter();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   const login = async () => {
     const { error } = await supabase.auth.signInWithPassword({ email, password });
-    if (error) return Alert.alert("Login error", error.message);
+    if (error) return Alert.alert('Login error', error.message);
 
-    // ✅ No manual navigation needed
-    // session listener in _layout.tsx will redirect automatically
+    // Navigate to tabs after successful login
+    router.replace('/(tabs)/home');
   };
 
   return (
@@ -30,7 +31,7 @@ export default function LoginScreen() {
         style={{ borderWidth: 1, padding: 10 }}
       />
       <Button title="Login" onPress={login} />
-      <Button title="Create account" onPress={() => router.push("/(auth)/RegisterScreen")} />
+      <Button title="Create account" onPress={() => router.push('/(auth)/register')} />
     </View>
   );
 }

@@ -1,6 +1,6 @@
 import { BarCodeScanner } from 'expo-barcode-scanner';
 import * as Linking from 'expo-linking';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Alert, Text } from 'react-native';
 
 export default function ScannerScreen({ navigation }: any) {
