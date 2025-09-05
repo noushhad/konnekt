@@ -1,11 +1,11 @@
-import { Ionicons } from '@expo/vector-icons';
+import { MaterialIcons } from '@expo/vector-icons';
 import { Tabs } from 'expo-router';
 
-export default function TabsLayout() {
+export default function TabLayout() {
   return (
     <Tabs
       screenOptions={{
-        headerShown: true,
+        headerShown: true, // show header
         tabBarActiveTintColor: '#2f95dc',
         tabBarInactiveTintColor: 'gray',
       }}
@@ -14,28 +14,21 @@ export default function TabsLayout() {
         name="home"
         options={{
           title: 'Home',
-          tabBarIcon: ({ color, size }) => <Ionicons name="home-outline" color={color} size={size} />,
-        }}
-      />
-      <Tabs.Screen
-        name="mycard"
-        options={{
-          title: 'My Card',
-          tabBarIcon: ({ color, size }) => <Ionicons name="card-outline" color={color} size={size} />,
+          tabBarIcon: ({ color, size }) => <MaterialIcons name="home" size={size} color={color} />,
         }}
       />
       <Tabs.Screen
         name="scan"
         options={{
-          title: 'Scan',
-          tabBarIcon: ({ color, size }) => <Ionicons name="scan-outline" color={color} size={size} />,
+          title: 'Scan QR',
+          tabBarIcon: ({ color, size }) => <MaterialIcons name="qr-code-scanner" size={size} color={color} />,
         }}
       />
       <Tabs.Screen
         name="saved"
         options={{
-          title: 'Saved',
-          tabBarIcon: ({ color, size }) => <Ionicons name="bookmark-outline" color={color} size={size} />,
+          title: 'Saved Profiles',
+          tabBarIcon: ({ color, size }) => <MaterialIcons name="save" size={size} color={color} />,
         }}
       />
     </Tabs>

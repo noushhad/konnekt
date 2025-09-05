@@ -24,13 +24,13 @@ export default function RootLayout() {
   return (
     <Stack screenOptions={{ headerShown: false }}>
       {session ? (
-        // Logged in → Tabs
-        <Stack.Screen name="(tabs)/home" />
+        // Logged in → render Tabs layout
+        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
       ) : (
         // Not logged in → Auth flow
         <>
-          <Stack.Screen name="(auth)/login" />
-          <Stack.Screen name="(auth)/register" />
+          <Stack.Screen name="(auth)/login" options={{ headerShown: false }} />
+          <Stack.Screen name="(auth)/register" options={{ headerShown: false }} />
         </>
       )}
     </Stack>
