@@ -8,6 +8,7 @@
     "scheme": "konnekt",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
+     "deeplinks": true,
     "ios": {
       "supportsTablet": true
     },

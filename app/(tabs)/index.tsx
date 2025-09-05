@@ -39,5 +39,9 @@
 // });
 
 // app/(tabs)/index.tsx
-import HomeScreen from '../HomeScreen'; // relative path
-export default HomeScreen;
+// app/(tabs)/index.tsx
+import { Tabs } from 'expo-router';
+
+export default function TabsLayout() {
+  return <Tabs />;
+}
