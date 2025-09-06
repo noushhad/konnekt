@@ -14,21 +14,36 @@ export default function TabLayout() {
         name="home"
         options={{
           title: 'Home',
-          tabBarIcon: ({ color, size }) => <MaterialIcons name="home" size={size} color={color} />,
+          tabBarIcon: ({ color, size }) => (
+            <MaterialIcons name="home" size={size} color={color} />
+          ),
         }}
       />
       <Tabs.Screen
         name="scan"
         options={{
           title: 'Scan QR',
-          tabBarIcon: ({ color, size }) => <MaterialIcons name="qr-code-scanner" size={size} color={color} />,
+          tabBarIcon: ({ color, size }) => (
+            <MaterialIcons name="qr-code-scanner" size={size} color={color} />
+          ),
         }}
       />
       <Tabs.Screen
         name="saved"
         options={{
           title: 'Saved Profiles',
-          tabBarIcon: ({ color, size }) => <MaterialIcons name="save" size={size} color={color} />,
+          tabBarIcon: ({ color, size }) => (
+            <MaterialIcons name="save" size={size} color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="mycard"
+        options={{
+          title: 'My Card',
+          tabBarIcon: ({ color, size }) => (
+            <MaterialIcons name="person" size={size} color={color} />
+          ),
         }}
       />
     </Tabs>

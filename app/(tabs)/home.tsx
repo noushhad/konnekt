@@ -1,22 +1,61 @@
-import { useRouter } from 'expo-router';
-import { Button, View } from 'react-native';
-import { supabase } from '../../src/lib/supabase';
+// app/(tabs)/home.tsx
+import * as Linking from 'expo-linking';
+import { Image, StyleSheet, Text, View } from 'react-native';
+import QRCode from 'react-native-qrcode-svg';
 
-export default function HomeTab() {
-  const router = useRouter();
+// Example: Replace with your auth/user context
+const mockUser = {
+  username: 'noushhad',
+  photoURL: 'https://i.pravatar.cc/150?img=3',
+};
 
-  const logout = async () => {
-    await supabase.auth.signOut();
-    router.replace('/(auth)/login'); // Correct path
-  };
+export default function HomeScreen() {
+  const profileUrl = Linking.createURL(`/profile/${mockUser.username}`);
 
   return (
-    <View style={{ padding: 24, gap: 12 }}>
-      <Button title="My QR" onPress={() => router.push('/(tabs)/mycard')} />
-      <Button title="Scan QR" onPress={() => router.push('/(tabs)/scan')} />
-      <Button title="Saved Profiles" onPress={() => router.push('/(tabs)/saved')} />
-      <Button title="Logout" onPress={logout} color="red" />
-      <Button title="Go to Login" onPress={() => router.replace('/(auth)/login')} />
+    <View style={styles.container}>
+      {/* Profile Section */}
+      <Image source={{ uri: mockUser.photoURL }} style={styles.avatar} />
+      <Text style={styles.username}>@{mockUser.username}</Text>
+
+      {/* QR Code Section */}
+      <View style={styles.qrContainer}>
+        <QRCode value={profileUrl} size={200} />
+      </View>
+
+      <Text style={styles.infoText}>Scan this QR to view my profile</Text>
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 20,
+  },
+  avatar: {
+    width: 100,
+    height: 100,
+    borderRadius: 50,
+    marginBottom: 12,
+  },
+  username: {
+    fontSize: 20,
+    fontWeight: '600',
+    marginBottom: 24,
+  },
+  qrContainer: {
+    padding: 16,
+    backgroundColor: '#f9fafb',
+    borderRadius: 16,
+    marginBottom: 16,
+  },
+  infoText: {
+    fontSize: 14,
+    color: '#555',
+    marginTop: 10,
+  },
+});
